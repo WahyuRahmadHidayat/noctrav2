@@ -98,15 +98,15 @@ export default function DetailView() {
             </div>
 
             {type === 'ride' && (
-              <button className="bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest">
+              <Link to="/action/register" className="inline-block bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest">
                 REGISTER FOR THIS RIDE
-              </button>
+              </Link>
             )}
             
             {type === 'gear' && (
-              <button className="flex items-center bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest">
+              <Link to="/action/cart" className="inline-flex items-center bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest">
                 <ShoppingCart size={20} className="mr-3" /> ADD TO CART
-              </button>
+              </Link>
             )}
           </div>
         </div>

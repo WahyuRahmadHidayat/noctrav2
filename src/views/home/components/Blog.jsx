@@ -1,41 +1,49 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import blogData from 'views/home/variables/blogData';
+import SectionLink from '@/components/SectionLink';
 
 export default function Blog() {
+  const displayData = blogData.slice(0, 3);
+
   return (
-    <section id="blog" className="py-12 md:py-16 container mx-auto px-4 md:px-8">
-      <div className="flex justify-between items-center mb-10 border-t border-border pt-8">
-        <h3 className="text-xl font-bold tracking-widest uppercase">Latest Notes</h3>
-        <a href="#" className="flex items-center text-xs tracking-widest text-primary hover:text-white transition-colors duration-300">
-          VIEW ALL POSTS <ArrowRight size={14} className="ml-2" />
-        </a>
+    <section id="blog" className="py-12 md:py-24 container mx-auto px-4 md:px-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 border-t border-border pt-8 gap-5">
+        <div>
+          <h3 className="text-primary text-xs font-bold tracking-widest mb-2 uppercase">Blog & Stories</h3>
+          <h2 className="font-bebas text-5xl md:text-6xl text-white leading-none">STORIES FROM THE ROAD</h2>
+        </div>
+        <SectionLink to="/blog">VIEW ALL POSTS</SectionLink>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {blogData.map((post, idx) => (
-          <div key={idx} className="bg-surface border border-border group cursor-pointer overflow-hidden flex flex-col">
-            <div className="relative h-56 overflow-hidden">
+        {displayData.map((item) => (
+          <Link 
+            key={item.id} 
+            to={`/blog/${item.id}`} 
+            className="bg-surface border border-border group flex flex-col h-full hover:border-primary/50 transition-colors cursor-pointer"
+          >
+            <div className="aspect-video relative overflow-hidden bg-background">
               <img 
-                src={post.img} 
-                alt={post.title} 
+                src={item.img} 
+                alt={item.title} 
                 className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
               />
               <div className="absolute top-4 left-4 bg-primary text-black px-3 py-1 text-[10px] font-bold tracking-widest">
-                {post.category}
+                {item.category || 'STORY'}
               </div>
             </div>
-            <div className="p-6 flex flex-col grow">
-              <div className="text-xs text-primary font-barlow tracking-widest mb-3">{post.date}</div>
-              <h4 className="font-bebas text-2xl mb-4 group-hover:text-primary transition-colors duration-300 leading-tight">
-                {post.title}
-              </h4>
-              <div className="mt-auto pt-4 border-t border-border/50">
-                <button className="flex items-center text-xs font-semibold text-gray-400 group-hover:text-white transition-colors duration-300">
-                  READ MORE <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
+            
+            <div className="p-6 flex flex-col grow justify-between bg-background">
+              <div>
+                <p className="text-xs text-gray-400 mb-2">{item.date}</p>
+                <h4 className="text-lg font-bold mb-4 group-hover:text-primary transition-colors">{item.title}</h4>
+                <span className="inline-flex items-center text-primary text-xs font-bold tracking-widest group-hover:text-white transition-colors">
+                  READ MORE <ArrowRight size={14} className="ml-2" />
+                </span>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

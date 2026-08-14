@@ -1,9 +1,21 @@
-import { Globe, Zap, Users } from 'lucide-react';
+import { Moon, Users, Zap } from 'lucide-react';
 
 const whyWeRideData = [
-  { icon: <Globe className="text-primary" size={28}/>, title: "01 / FREEDOM", desc: "The night is ours. No rules, just the road." },
-  { icon: <Zap className="text-primary" size={28}/>, title: "02 / SPEED", desc: "Push harder. Go faster. Break your limits." },
-  { icon: <Users className="text-primary" size={28}/>, title: "03 / COMMUNITY", desc: "Different backgrounds, one passion." },
+  {
+    icon: <Moon size={28} className="text-white" />,
+    title: "CHASE THE SILENCE",
+    desc: "When the city sleeps, the streets belong to us. Find your rhythm in the absolute quiet of the urban night."
+  },
+  {
+    icon: <Users size={28} className="text-white" />,
+    title: "THE BROTHERHOOD",
+    desc: "We ride as one. A diverse community united by the pedal, creating unbreakable bonds that go beyond the road."
+  },
+  {
+    icon: <Zap size={28} className="text-white" />,
+    title: "PUSH THE LIMITS",
+    desc: "Every ride is a new challenge. Break past your comfort zone and discover what you are truly capable of."
+  }
 ];
 
 export default whyWeRideData;

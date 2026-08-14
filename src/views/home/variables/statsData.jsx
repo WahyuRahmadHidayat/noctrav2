@@ -1,10 +1,30 @@
-import { MapPin, Clock, Users, Gauge } from 'lucide-react';
+import { Users, Moon, Route, MapPin } from 'lucide-react';
 
 const statsData = [
-  { icon: <MapPin size={24}/>, value: "32", unit: "KM", label: "TOTAL DISTANCE" },
-  { icon: <Clock size={24}/>, value: "02:14:32", unit: "", label: "TOTAL TIME" },
-  { icon: <Users size={24}/>, value: "24", unit: "", label: "RIDERS" },
-  { icon: <Gauge size={24}/>, value: "01:42", unit: "", label: "AVG PACE" },
+  {
+    id: 1,
+    icon: <Users size={36} className="text-white group-hover:text-primary transition-colors duration-300" />,
+    value: "1,250+",
+    label: "ACTIVE RIDERS"
+  },
+  {
+    id: 2,
+    icon: <Moon size={36} className="text-white group-hover:text-primary transition-colors duration-300" />,
+    value: "80+",
+    label: "NIGHT RIDES"
+  },
+  {
+    id: 3,
+    icon: <Route size={36} className="text-white group-hover:text-primary transition-colors duration-300" />,
+    value: "25,000+",
+    label: "KM COVERED"
+  },
+  {
+    id: 4,
+    icon: <MapPin size={36} className="text-white group-hover:text-primary transition-colors duration-300" />,
+    value: "12+",
+    label: "CITIES"
+  }
 ];
 
 export default statsData;

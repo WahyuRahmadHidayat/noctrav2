@@ -1,4 +1,4 @@
-import statsData from 'views/home/variables/statsData';
+import statsData from '@/views/home/variables/statsData';
 
 export default function Stats() {
   return (

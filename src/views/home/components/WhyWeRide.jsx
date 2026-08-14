@@ -1,5 +1,5 @@
 import { Play } from 'lucide-react';
-import whyWeRideData from 'views/home/variables/whyWeRideData';
+import whyWeRideData from '@/views/home/variables/whyWeRideData';
 
 export default function WhyWeRide() {
   return (
