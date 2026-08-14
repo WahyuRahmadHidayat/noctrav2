@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpRight, Menu, X, User, ShoppingCart, LogOut } from 'lucide-react';
 import routes from 'routes'; 
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState('HOME');
@@ -30,7 +31,7 @@ export default function Navbar() {
 
       <div className="flex items-center space-x-6 z-50 relative">
         <button className="hidden md:flex items-center space-x-2 bg-primary text-black px-6 py-2.5 font-semibold text-sm hover:bg-white transition-colors duration-300">
-          <span>JOIN THE RIDE</span>
+          <Link to="/action/join" >JOIN THE RIDE</Link>
           <ArrowUpRight size={18} />
         </button>
         
