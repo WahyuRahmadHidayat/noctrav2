@@ -1,5 +1,6 @@
 import { ArrowUpRight, Play, Crosshair } from 'lucide-react';
 import { FaInstagram, FaYoutube, FaStrava } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -24,15 +25,18 @@ export default function Hero() {
           
           <p className="text-lg md:text-2xl font-inter font-light tracking-widest mb-10">OWN THE NIGHT.</p>
           
-          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <button className="w-full sm:w-auto flex items-center justify-center space-x-2 bg-primary text-black px-8 py-4 font-semibold hover:bg-white transition-colors duration-300">
-              <span>JOIN THE RIDE</span>
-              <ArrowUpRight size={20} />
-            </button>
-            <button className="w-full sm:w-auto flex items-center justify-center space-x-3 text-white hover:text-primary transition-colors duration-300 group">
-              <span className="text-sm font-medium tracking-wide">WATCH VIDEO</span>
-              <div className="border border-white group-hover:border-primary rounded-full p-2 transition-colors duration-300">
-                <Play size={16} className="fill-current" />
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
+            <Link 
+              to="/action/join" 
+              className="w-full sm:w-auto flex items-center justify-center bg-primary text-black px-8 py-4 text-sm font-bold tracking-widest hover:bg-white transition-colors duration-300 uppercase"
+            >
+              JOIN THE RIDE <ArrowUpRight size={18} className="ml-3" />
+            </Link>
+            
+            <button className="w-full sm:w-auto flex items-center justify-center text-white hover:text-primary transition-colors duration-300 group uppercase">
+              <span className="text-sm font-bold tracking-widest mr-4">WATCH VIDEO</span>
+              <div className="flex items-center justify-center w-12 h-12 rounded-full border border-white group-hover:border-primary transition-colors duration-300">
+                <Play size={16} className="fill-current ml-1" />
               </div>
             </button>
           </div>
