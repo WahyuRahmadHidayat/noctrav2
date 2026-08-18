@@ -23,7 +23,7 @@ export default function UpcomingRides() {
             to={`/rides/${item.id}`} 
             className="bg-surface border border-border group flex flex-col h-full hover:border-primary/50 transition-colors cursor-pointer"
           >
-            <div className="aspect-4/5 relative overflow-hidden bg-background">
+            <div className="aspect-4/3 relative overflow-hidden bg-background">
               <img 
                 src={item.img} 
                 alt={item.title} 

@@ -1,22 +1,29 @@
+import trafficImg from '@/assets/images/glob/b4.webp';
+import psychologyImg from '@/assets/images/glob/b1.webp';
+import vintageImg from '@/assets/images/glob/b5.webp';
+
 const blogData = [
-  { 
-    date: "10 AUG 2026", 
-    title: "THE RISE OF URBAN CYCLING IN JAKARTA", 
-    category: "COMMUNITY", 
-    img: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=600&auto=format&fit=crop" 
+  {
+    id: "surviving-jakarta-traffic-after-dark",
+    img: trafficImg,
+    title: "SURVIVING THE JAKARTA TRAFFIC AFTER DARK",
+    date: "10 AUG 2026",
+    category: "GUIDES"
   },
-  { 
-    date: "05 AUG 2026", 
-    title: "HOW TO PREPARE FOR YOUR FIRST NIGHT RIDE", 
-    category: "TIPS & TRICKS", 
-    img: "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?q=80&w=600&auto=format&fit=crop" 
+  {
+    id: "psychology-of-night-riding",
+    img: psychologyImg,
+    title: "THE PSYCHOLOGY OF NIGHT RIDING",
+    date: "28 JUL 2026",
+    category: "CULTURE"
   },
-  { 
-    date: "28 JUL 2026", 
-    title: "REVIEW: NOCTRA PERFORMANCE JACKET", 
-    category: "GEAR", 
-    img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=600&auto=format&fit=crop" 
-  },
+  {
+    id: "top-5-vintage-bikes-urban",
+    img: vintageImg,
+    title: "TOP 5 VINTAGE BIKES FOR URBAN COMMUTE",
+    date: "15 JUL 2026",
+    category: "GEAR"
+  }
 ];
 
 export default blogData;

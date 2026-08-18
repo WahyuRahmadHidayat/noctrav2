@@ -1,24 +1,37 @@
+import jerseyImg from '@/assets/images/gear/shop1.webp';
+import helmetImg from '@/assets/images/gear/shop2.webp';
+import gogglesImg from '@/assets/images/gear/shop3.webp';
+import glovesImg from '@/assets/images/gear/shop4.webp';
+
 const gearData = [
-  { 
-    name: "NOCTRA JACKET", 
-    price: "IDR 499.000", 
-    img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=400&auto=format&fit=crop" 
+  {
+    id: "noctra-reflective-jersey",
+    img: jerseyImg,
+    name: "NOCTRA REFLECTIVE JERSEY",
+    price: "IDR 499.000",
+    category: "APPAREL"
   },
-  { 
-    name: "NOCTRA JERSEY", 
-    price: "IDR 299.000", 
-    img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=400&auto=format&fit=crop" 
+  {
+    id: "aero-stealth-helmet",
+    img: helmetImg,
+    name: "AERO STEALTH HELMET",
+    price: "IDR 1.250.000",
+    category: "EQUIPMENT"
   },
-  { 
-    name: "NOCTRA CAP", 
-    price: "IDR 129.000", 
-    img: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=400&auto=format&fit=crop" 
+  {
+    id: "nightvision-goggles",
+    img: gogglesImg,
+    name: "NIGHTVISION GOGGLES",
+    price: "IDR 850.000",
+    category: "ACCESSORIES"
   },
-  { 
-    name: "NOCTRA BOTTLE", 
-    price: "IDR 99.000", 
-    img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=400&auto=format&fit=crop" 
-  },
+  {
+    id: "urban-cycling-gloves",
+    img: glovesImg,
+    name: "URBAN CYCLING GLOVES",
+    price: "IDR 350.000",
+    category: "APPAREL"
+  }
 ];
 
 export default gearData;

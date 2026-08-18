@@ -1,56 +1,100 @@
-import { Mail, MapPin, ArrowRight } from 'lucide-react';
-import { FaInstagram } from 'react-icons/fa';
+import { Mail, MapPin, Phone, Loader2 } from 'lucide-react';
+import { useContactForm } from '@/hooks/useContactForm';
 
 export default function ContactView() {
-  return (
-    <div className="min-h-screen bg-background text-white pt-32 pb-20 px-4 md:px-8 relative">
-      <div className="absolute inset-0 bg-cover bg-center z-0 opacity-20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1558981359-219d6364c9c8?q=80&w=2000&auto=format&fit=crop')" }} />
-      <div className="absolute inset-0 bg-linear-to-r from-background via-background/90 to-background/50 z-10" />
+  const { formData, setFormData, status, errorMsg, handleSubmit } = useContactForm();
 
-      <div className="container mx-auto max-w-6xl relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-          
-          <div>
-            <h1 className="font-bebas text-5xl md:text-7xl text-white mb-4 tracking-wider">CONTACT US</h1>
-            <p className="text-gray-400 mb-12">Let's ride together. Reach out!</p>
+  return (
+    <div className="min-h-screen bg-background text-white pt-32 pb-20 px-4 md:px-8">
+      <div className="container mx-auto max-w-6xl">
+        <div className="flex flex-col md:flex-row gap-16 items-start">
+          <div className="w-full md:w-1/2">
+            <h3 className="text-primary text-xs font-bold tracking-widest mb-2 uppercase">Get In Touch</h3>
+            <h1 className="font-bebas text-6xl md:text-8xl text-white leading-none mb-8">CONTACT US</h1>
+            <p className="text-gray-400 text-sm mb-12 leading-relaxed">
+              Have questions about upcoming rides, gear shipping, or collaboration? Drop us a message and our crew will get back to you as soon as possible.
+            </p>
 
             <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <Mail className="text-primary mt-1" size={24} />
-                <div>
-                  <h4 className="text-xs tracking-widest text-gray-400 mb-1">EMAIL</h4>
-                  <p className="text-white">hello@noctra.cc</p>
+              <div className="flex items-start gap-4">
+                <div className="bg-primary/10 p-3 border border-primary/20 text-primary"><MapPin size={24} /></div>
+                <div className="pt-1">
+                  <h4 className="font-bold text-sm tracking-widest uppercase mb-2 text-white">Headquarters</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">124 Neon Alley, District 9<br/>Jakarta, Indonesia 12190</p>
                 </div>
               </div>
-              <div className="flex items-start space-x-4">
-                <FaInstagram className="text-primary mt-1" size={24} />
-                <div>
-                  <h4 className="text-xs tracking-widest text-gray-400 mb-1">INSTAGRAM</h4>
-                  <p className="text-white">@noctra.cc</p>
+              <div className="flex items-start gap-4">
+                <div className="bg-primary/10 p-3 border border-primary/20 text-primary"><Mail size={24} /></div>
+                <div className="pt-1">
+                  <h4 className="font-bold text-sm tracking-widest uppercase mb-2 text-white">Email</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">crew@noctra.cc</p>
                 </div>
               </div>
-              <div className="flex items-start space-x-4">
-                <MapPin className="text-primary mt-1" size={24} />
-                <div>
-                  <h4 className="text-xs tracking-widest text-gray-400 mb-1">LOCATION</h4>
-                  <p className="text-white">Jakarta, Indonesia</p>
+              <div className="flex items-start gap-4">
+                <div className="bg-primary/10 p-3 border border-primary/20 text-primary"><Phone size={24} /></div>
+                <div className="pt-1">
+                  <h4 className="font-bold text-sm tracking-widest uppercase mb-2 text-white">Emergency / Hotline</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">+62 811 2233 4455</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-surface/50 backdrop-blur-sm border border-border p-8">
-            <form className="space-y-6">
-              <input type="text" placeholder="Your Name" className="w-full bg-background/50 border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-white" />
-              <input type="email" placeholder="Your Email" className="w-full bg-background/50 border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-white" />
-              <input type="text" placeholder="Subject" className="w-full bg-background/50 border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-white" />
-              <textarea placeholder="Your Message" rows="4" className="w-full bg-background/50 border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-white resize-none"></textarea>
-              <button type="button" className="bg-primary text-black px-8 py-4 text-xs font-bold tracking-widest hover:bg-white transition-colors flex items-center justify-center w-full md:w-auto">
-                SEND MESSAGE <ArrowRight size={16} className="ml-2" />
+          <div className="w-full md:w-1/2 bg-surface border border-border p-8 md:p-10 shadow-[0_0_30px_rgba(0,0,0,0.3)]">
+            <h3 className="font-bebas text-3xl mb-8 border-b border-white/10 pb-4">SEND A MESSAGE</h3>
+            
+            {status === 'success' && (
+              <div className="bg-primary/20 border border-primary text-primary p-4 mb-6 text-sm font-bold tracking-widest uppercase text-center">
+                MESSAGE TRANSMITTED SUCCESSFULLY
+              </div>
+            )}
+            
+            {status === 'error' && (
+              <div className="bg-red-500/20 border border-red-500 text-red-500 p-4 mb-6 text-sm font-bold tracking-widest uppercase text-center">
+                {errorMsg}
+              </div>
+            )}
+
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="space-y-2">
+                <label className="text-xs text-gray-400 tracking-widest uppercase">Full Name</label>
+                <input 
+                  type="text" 
+                  required 
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  className="w-full bg-background border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-white" 
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs text-gray-400 tracking-widest uppercase">Email Address</label>
+                <input 
+                  type="email" 
+                  required 
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full bg-background border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-white" 
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs text-gray-400 tracking-widest uppercase">Message</label>
+                <textarea 
+                  rows="5" 
+                  required 
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  className="w-full bg-background border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-white resize-none"
+                ></textarea>
+              </div>
+              <button 
+                type="submit" 
+                disabled={status === 'loading'}
+                className="w-full bg-primary text-black py-4 text-sm font-bold tracking-widest hover:bg-white transition-colors uppercase disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
+              >
+                {status === 'loading' ? <Loader2 className="animate-spin" size={20} /> : 'TRANSMIT MESSAGE'}
               </button>
             </form>
           </div>
-
         </div>
       </div>
     </div>
