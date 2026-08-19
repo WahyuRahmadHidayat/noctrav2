@@ -1,4 +1,4 @@
-import aboutBg from '@/assets/images/about/why-ride-bg.avif';
+import aboutBg from '@/assets/images/hero/why-ride-bg.avif';
 import SEO from '@/components/SEO';
 
 export default function AboutView() {
