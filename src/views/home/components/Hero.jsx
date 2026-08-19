@@ -1,3 +1,4 @@
+import heroBg from '@/assets/images/hero/hero.avif';
 import { ArrowUpRight, Play, Crosshair } from 'lucide-react';
 import { FaInstagram, FaYoutube, FaStrava } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -7,7 +8,7 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center pt-28 md:pt-20">
       <div 
         className="absolute inset-0 bg-cover bg-center z-0 opacity-40"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1558981359-219d6364c9c8?q=80&w=2000&auto=format&fit=crop')" }}
+        style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div className="absolute inset-0 bg-linear-to-r from-background via-background/80 to-transparent z-10" />
 

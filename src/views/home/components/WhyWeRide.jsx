@@ -1,3 +1,4 @@
+import whyRideBg from '@/assets/images/hero/why-ride-bg.avif';
 import { Play } from 'lucide-react';
 import whyWeRideData from '@/views/home/variables/whyWeRideData';
 
@@ -26,8 +27,9 @@ export default function WhyWeRide() {
 
         <div className="md:col-span-5 relative group cursor-pointer overflow-hidden border border-border mt-4 md:mt-0">
           <img 
-            src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=1000&auto=format&fit=crop" 
+            src={whyRideBg} 
             alt="Night Ride" 
+            loading="lazy"
             className="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-colors duration-300">
