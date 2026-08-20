@@ -79,12 +79,10 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-xs font-bold tracking-widest uppercase">
-            &copy; 2026 NOCTRA CYCLING CLUB. ALL RIGHTS RESERVED.
-          </p>
+        <p>&copy; {new Date().getFullYear()} NOCTRA. All rights reserved.</p>
           <div className="flex gap-6 text-gray-600 text-xs font-bold tracking-widest uppercase">
-            <Link to="#" className="hover:text-primary transition-colors outline-none focus:text-primary">Privacy Policy</Link>
-            <Link to="#" className="hover:text-primary transition-colors outline-none focus:text-primary">Terms of Service</Link>
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors outline-none focus:text-primary">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-primary transition-colors outline-none focus:text-primary">Terms of Service</Link>
           </div>
         </div>
       </div>
