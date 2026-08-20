@@ -2,7 +2,7 @@
 
 NOCTRA adalah platform aplikasi web modern yang dibangun menggunakan ekosistem React. Proyek ini berfokus pada performa yang cepat, antarmuka yang responsif dengan nuansa monokrom (hitam-putih), dan pengalaman pengguna yang mulus.
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - Framework: React.js + Vite
 - Styling: Tailwind CSS
@@ -10,7 +10,7 @@ NOCTRA adalah platform aplikasi web modern yang dibangun menggunakan ekosistem R
 - Backend/Serverless: Vercel Serverless Functions
 - Deployment: Vercel
 
-## 🛠️ Cara Menjalankan Proyek (Lokal)
+## Cara Menjalankan Proyek (Lokal)
 
 Ikuti langkah-langkah di bawah ini untuk menjalankan aplikasi di komputer lokal:
 
