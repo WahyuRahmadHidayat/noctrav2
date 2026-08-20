@@ -3,6 +3,7 @@ import { ArrowRight, Loader2 } from 'lucide-react';
 import { FaInstagram, FaYoutube, FaTiktok, FaStrava } from 'react-icons/fa';
 import routes from '../routes';
 import { useNewsletter } from '@/hooks/useNewsletter';
+import { socialLinks } from '@/config/socialLinks';
 
 export default function Footer() {
   const { email, setEmail, status, handleSubscribe } = useNewsletter();
@@ -22,10 +23,10 @@ export default function Footer() {
               Urban cycling club dedicated to those who own the night. Ride safe, ride fast, ride together.
             </p>
             <div className="flex gap-4 text-gray-400">
-              <a href="#" aria-label="Visit our Instagram" className="hover:text-primary transition-colors outline-none focus:text-primary"><FaInstagram size={20} aria-hidden="true" /></a>
-              <a href="#" aria-label="Visit our YouTube" className="hover:text-primary transition-colors outline-none focus:text-primary"><FaYoutube size={20} aria-hidden="true" /></a>
-              <a href="#" aria-label="Visit our TikTok" className="hover:text-primary transition-colors outline-none focus:text-primary"><FaTiktok size={20} aria-hidden="true" /></a>
-              <a href="#" aria-label="Visit our Strava" className="hover:text-primary transition-colors outline-none focus:text-primary"><FaStrava size={20} aria-hidden="true" /></a>
+              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram" className="hover:text-primary transition-colors outline-none focus:text-primary"><FaInstagram size={20} aria-hidden="true" /></a>
+              <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube" className="hover:text-primary transition-colors outline-none focus:text-primary"><FaYoutube size={20} aria-hidden="true" /></a>
+              <a href={socialLinks.tiktok} target="_blank" rel="noopener noreferrer" aria-label="Visit our TikTok" className="hover:text-primary transition-colors outline-none focus:text-primary"><FaTiktok size={20} aria-hidden="true" /></a>
+              <a href={socialLinks.strava} target="_blank" rel="noopener noreferrer" aria-label="Visit our Strava" className="hover:text-primary transition-colors outline-none focus:text-primary"><FaStrava size={20} aria-hidden="true" /></a>
             </div>
           </div>
 

@@ -13,7 +13,8 @@ export default async function handler(req, res) {
 
     const data = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: ['wahyu@contoh.com'], 
+      //fallback ke email onboarding jika kosong
+      to: [process.env.CONTACT_EMAIL_TO || 'onboarding@resend.dev'], 
       subject: `Pesan Baru dari ${name} - NOCTRA`,
       html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`,
     });

@@ -1,6 +1,9 @@
+import SEO from '@/components/SEO';
+
 const TermsView = () => {
   return (
     <div className="container mx-auto px-6 py-16 mt-20 text-white min-h-screen">
+      <SEO title="Terms of Service" description="Syarat dan ketentuan penggunaan layanan serta pembelian produk NOCTRA." />
       <h1 className="text-4xl font-bold mb-6">Terms of Service</h1>
       <p className="text-gray-400 mb-8">Terakhir diperbarui: {new Date().toLocaleDateString('id-ID')}</p>
       

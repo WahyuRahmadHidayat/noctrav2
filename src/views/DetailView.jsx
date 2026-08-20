@@ -3,6 +3,7 @@ import { ArrowLeft, MapPin, Clock, ShoppingCart, Tag, Calendar } from 'lucide-re
 import ridesData from 'views/home/variables/ridesData';
 import gearData from 'views/home/variables/gearData';
 import blogData from 'views/home/variables/blogData';
+import SEO from '@/components/SEO'; 
 
 export default function DetailView() {
   const { id } = useParams();
@@ -29,6 +30,9 @@ export default function DetailView() {
   if (!item) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-background text-white">
+        {/* SEO untuk halaman error 404 */}
+        <SEO title="404 - Not Found" description="The requested page could not be found." />
+        
         <h1 className="font-bebas text-8xl text-primary mb-4">404</h1>
         <p className="text-xl text-gray-400 mb-8">PAGE NOT FOUND</p>
         <Link to="/" className="bg-primary text-black px-8 py-3 font-semibold hover:bg-white transition-colors">
@@ -40,6 +44,12 @@ export default function DetailView() {
 
   return (
     <div className="min-h-screen bg-background text-white pt-28 pb-20 px-4 md:px-8">
+      {/* Komponen SEO Dinamis sesuai nama item */}
+      <SEO 
+        title={item.title || item.name || 'Detail'} 
+        description={`View details for ${item.title || item.name}`} 
+      />
+
       <div className="container mx-auto max-w-5xl">
         <Link to={backPath} className="inline-flex items-center text-xs tracking-widest text-primary mb-8 hover:text-white transition-colors">
           <ArrowLeft size={16} className="mr-2" /> BACK

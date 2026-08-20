@@ -1,11 +1,14 @@
 import { Mail, MapPin, Phone, Loader2 } from 'lucide-react';
 import { useContactForm } from '@/hooks/useContactForm';
+import SEO from '@/components/SEO';
 
 export default function ContactView() {
   const { formData, setFormData, status, errorMsg, handleSubmit } = useContactForm();
 
   return (
     <div className="min-h-screen bg-background text-white pt-32 pb-20 px-4 md:px-8">
+      <SEO title="Contact" description="Get in touch with NOCTRA. We'd love to hear from you." />
+      
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row gap-16 items-start">
           <div className="w-full md:w-1/2">

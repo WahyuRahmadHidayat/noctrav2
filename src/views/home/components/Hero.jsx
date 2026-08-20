@@ -1,7 +1,8 @@
 import heroBg from '@/assets/images/hero/hero.avif';
-import { ArrowUpRight, Play, Crosshair } from 'lucide-react';
-import { FaInstagram, FaYoutube, FaStrava } from 'react-icons/fa';
+import { ArrowUpRight, Crosshair } from 'lucide-react';
+import { FaInstagram, FaTiktok, FaStrava } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { socialLinks } from '@/config/socialLinks';
 
 export default function Hero() {
   return (
@@ -33,20 +34,13 @@ export default function Hero() {
             >
               JOIN THE RIDE <ArrowUpRight size={18} className="ml-3" />
             </Link>
-            
-            <button className="w-full sm:w-auto flex items-center justify-center text-white hover:text-primary transition-colors duration-300 group uppercase">
-              <span className="text-sm font-bold tracking-widest mr-4">WATCH VIDEO</span>
-              <div className="flex items-center justify-center w-12 h-12 rounded-full border border-white group-hover:border-primary transition-colors duration-300">
-                <Play size={16} className="fill-current ml-1" />
-              </div>
-            </button>
           </div>
         </div>
 
         <div className="hidden lg:flex flex-col items-center justify-center space-y-8 pr-4">
-          <a href="#" className="text-gray-400 hover:text-primary transition-colors duration-300"><FaInstagram size={20} /></a>
-          <a href="#" className="text-gray-400 hover:text-primary transition-colors duration-300"><FaYoutube size={20} /></a>
-          <a href="#" className="text-gray-400 hover:text-primary transition-colors duration-300"><FaStrava size={20} /></a>
+          <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram" className="text-gray-400 hover:text-primary transition-colors duration-300"><FaInstagram size={20} /></a>
+          <a href={socialLinks.tiktok} target="_blank" rel="noopener noreferrer" aria-label="Visit our Tiktok" className="text-gray-400 hover:text-primary transition-colors duration-300"><FaTiktok size={20}  /></a>
+          <a href={socialLinks.strava} target="_blank" rel="noopener noreferrer" aria-label="Visit our Strava" className="text-gray-400 hover:text-primary transition-colors duration-300"><FaStrava size={20} /></a>
         </div>
       </div>
     </section>
