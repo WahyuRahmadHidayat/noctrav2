@@ -1,3 +1,11 @@
+// ==========================================
+// TODO: LEGALITAS ASET FOTO PRODUK (URGENT SEBELUM PRODUCTION)
+// ==========================================
+// Pastikan semua gambar produk (jersey, sepeda, helm, dll) di dalam data ini
+// sudah memiliki izin lisensi/hak cipta yang sah, atau diganti dengan aset bebas hak cipta (royalty-free) seperti dari Unsplash/Pexels 
+// sebelum aplikasi NOCTRA diluncurkan untuk publik secara komersial.
+// ==========================================
+
 import jerseyImg from '@/assets/images/gear/shop1.webp';
 import helmetImg from '@/assets/images/gear/shop2.webp';
 import gogglesImg from '@/assets/images/gear/shop3.webp';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { submitNewsletter } from '@/services/api';
+import { supabase } from '@/supabase';
 
 export const useNewsletter = () => {
   const [email, setEmail] = useState('');
@@ -11,11 +11,23 @@ export const useNewsletter = () => {
     setStatus('loading');
     
     try {
-      await submitNewsletter(email);
-      setStatus('success');
-      setEmail('');
-    } catch {
+      const { error } = await supabase
+        .from('subscribers')
+        .insert([{ email }]);
+
+      if (error) {
+        console.error('Error insert Supabase:', error);
+        setStatus('error');
+      } else {
+        setStatus('success');
+        setEmail('');
+      }
+
+      setTimeout(() => setStatus('idle'), 3000);
+    } catch (err) {
+      console.error('System error:', err);
       setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
     }
   };
 

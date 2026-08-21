@@ -5,19 +5,7 @@ export const submitContactForm = async (data) => {
     body: JSON.stringify(data)
   });
   if (!response.ok) throw new Error('Transmission failed. Try again.');
-  
-  //ganti return response.json(); jika API sudah siap
   return {}; 
-};
-
-export const submitNewsletter = async (email) => {
-  const response = await fetch('/api/newsletter', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email })
-  });
-  if (!response.ok) throw new Error('Failed');
-  return {};
 };
 
 export const submitAction = async (type, data) => {
