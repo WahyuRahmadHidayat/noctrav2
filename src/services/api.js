@@ -1,5 +1,7 @@
+const BASE_URL = 'https://noctrav2.vercel.app';
+
 export const submitContactForm = async (data) => {
-  const response = await fetch('/api/contact', {
+  const response = await fetch(`${BASE_URL}/api/contact`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -9,7 +11,7 @@ export const submitContactForm = async (data) => {
 };
 
 export const submitAction = async (type, data) => {
-  const response = await fetch(`/api/actions/${type}`, {
+  const response = await fetch(`${BASE_URL}/api/actions/${type}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
