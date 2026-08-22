@@ -1,16 +1,28 @@
-import process from 'process';
 import { Resend } from 'resend';
 import midtransClient from 'midtrans-client';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(globalThis.process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed. Gunakan metode POST.' });
   }
 
   const { type } = req.query;
-  const { name, email, phone, gross_amount = 0 } = req.body;
+  const body = req.body || {};
+  const { name, email, phone, gross_amount = 0 } = body;
 
   try {
     if (type === 'join') {
@@ -20,7 +32,7 @@ export default async function handler(req, res) {
 
       await resend.emails.send({
         from: 'onboarding@resend.dev',
-        to: process.env.CONTACT_EMAIL_TO || 'onboarding@resend.dev',
+        to: globalThis.process.env.CONTACT_EMAIL_TO || 'onboarding@resend.dev',
         subject: `[NOCTRA] New Community Member: ${name}`,
         html: `
           <h2>Member Baru Bergabung!</h2>
@@ -40,7 +52,7 @@ export default async function handler(req, res) {
 
       let snap = new midtransClient.Snap({
         isProduction: false,
-        serverKey: process.env.MIDTRANS_SERVER_KEY,
+        serverKey: globalThis.process.env.MIDTRANS_SERVER_KEY,
       });
 
       let parameter = {
