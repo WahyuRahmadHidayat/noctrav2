@@ -1,5 +1,4 @@
 import whyRideBg from '@/assets/images/hero/why-ride-bg.avif';
-import { Play } from 'lucide-react';
 import whyWeRideData from '@/views/home/variables/whyWeRideData';
 
 export default function WhyWeRide() {
@@ -25,18 +24,13 @@ export default function WhyWeRide() {
           ))}
         </div>
 
-        <div className="md:col-span-5 relative group cursor-pointer overflow-hidden border border-border mt-4 md:mt-0">
+        <div className="md:col-span-5 relative overflow-hidden border border-border mt-4 md:mt-0">
           <img 
             src={whyRideBg} 
             alt="Night Ride" 
             loading="lazy"
-            className="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+            className="w-full h-48 md:h-64 object-cover"
           />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-colors duration-300">
-            <div className="bg-background/80 rounded-full p-3 md:p-4 border border-white group-hover:border-primary transition-colors duration-300">
-              <Play size={24} className="fill-white group-hover:fill-primary transition-colors duration-300" />
-            </div>
-          </div>
         </div>
       </div>
     </section>

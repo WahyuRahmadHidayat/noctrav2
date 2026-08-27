@@ -30,7 +30,6 @@ export default function DetailView() {
   if (!item) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-background text-white">
-        {/* SEO untuk halaman error 404 */}
         <SEO title="404 - Not Found" description="The requested page could not be found." />
         
         <h1 className="font-bebas text-8xl text-primary mb-4">404</h1>
@@ -44,7 +43,6 @@ export default function DetailView() {
 
   return (
     <div className="min-h-screen bg-background text-white pt-28 pb-20 px-4 md:px-8">
-      {/* Komponen SEO Dinamis sesuai nama item */}
       <SEO 
         title={item.title || item.name || 'Detail'} 
         description={`View details for ${item.title || item.name}`} 
@@ -103,18 +101,34 @@ export default function DetailView() {
             )}
 
             <div className="prose prose-invert max-w-none mb-10 text-gray-400 leading-relaxed">
-              <p>The night offers a different perspective. Stripped of the daytime chaos, the streets become our playground. We ride not just for the speed, but for the clarity that only the dark can bring. Every rotation of the pedal is a step closer to understanding our limits and breaking past them.</p>
-              <p>Join us as we explore the urban landscape under a new light. This isn't just about reaching a destination; it's about the shared experience of the journey. Prepare your gear, focus your mind, and let the city's rhythm guide your pace.</p>
+              {item.content && Array.isArray(item.content) && item.content.length > 0 ? (
+                item.content.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))
+              ) : (
+                <>
+                  <p>The night offers a different perspective. Stripped of the daytime chaos, the streets become our playground. We ride not just for the speed, but for the clarity that only the dark can bring. Every rotation of the pedal is a step closer to understanding our limits and breaking past them.</p>
+                  <p>Join us as we explore the urban landscape under a new light. This isn't just about reaching a destination; it's about the shared experience of the journey. Prepare your gear, focus your mind, and let the city's rhythm guide your pace.</p>
+                </>
+              )}
             </div>
 
             {type === 'ride' && (
-              <Link to="/action/register" className="inline-block bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest">
+              <Link 
+                to="/action/register" 
+                state={{ id: item.id, title: item.title || item.name, price: item.price }}
+                className="inline-block bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest"
+              >
                 REGISTER FOR THIS RIDE
               </Link>
             )}
             
             {type === 'gear' && (
-              <Link to="/action/cart" className="inline-flex items-center bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest">
+              <Link 
+                to="/action/cart" 
+                state={{ id: item.id, title: item.title || item.name, price: item.price }}
+                className="inline-flex items-center bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest"
+              >
                 <ShoppingCart size={20} className="mr-3" /> ADD TO CART
               </Link>
             )}

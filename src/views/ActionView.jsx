@@ -1,10 +1,13 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import { ArrowLeft, Loader2, ShieldCheck } from 'lucide-react';
 import { useActionForm } from '@/hooks/useActionForm';
 
 export default function ActionView() {
   const { type } = useParams();
-  const { formData, setFormData, status, errorMsg, handleSubmit } = useActionForm(type);
+  const location = useLocation();
+  const productData = location.state || null;
+  
+  const { formData, setFormData, status, errorMsg, handleSubmit } = useActionForm(type, productData);
 
   const titles = {
     join: 'JOIN THE CREW',
@@ -48,13 +51,32 @@ export default function ActionView() {
             </div>
           )}
 
+          {/* TAMPILKAN RINGKASAN ORDER DI SINI */}
+          {productData && (
+            <div className="mb-6 p-4 border border-zinc-800 bg-zinc-900/50 rounded flex justify-between items-center">
+              <div>
+                <p className="text-xs text-zinc-500 uppercase tracking-widest">Order Summary</p>
+                <p className="font-bold text-white text-lg">{productData.title}</p>
+              </div>
+              <p className="text-primary font-bold">{productData.price}</p>
+            </div>
+          )}
+          
+          {/* FALLBACK JIKA AKSES LANGSUNG TANPA PRODUK */}
+          {!productData && type !== 'join' && (
+             <div className="mb-6 p-4 border border-zinc-800 bg-zinc-900/50 rounded">
+               <p className="text-sm text-zinc-400">Community Registration / General Payment</p>
+             </div>
+          )}
+
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label className="text-xs text-gray-400 tracking-widest uppercase">Full Name</label>
               <input 
                 type="text" 
+                name="name"
                 required 
-                value={formData.name}
+                value={formData.name || ''}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
                 className="w-full bg-background border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-white" 
               />
@@ -63,8 +85,9 @@ export default function ActionView() {
               <label className="text-xs text-gray-400 tracking-widest uppercase">Email Address</label>
               <input 
                 type="email" 
+                name="email"
                 required 
-                value={formData.email}
+                value={formData.email || ''}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
                 className="w-full bg-background border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-white" 
               />
@@ -75,8 +98,9 @@ export default function ActionView() {
                 <label className="text-xs text-gray-400 tracking-widest uppercase">Phone Number (For Payment/Delivery)</label>
                 <input 
                   type="tel" 
+                  name="phone"
                   required 
-                  value={formData.phone}
+                  value={formData.phone || ''}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   className="w-full bg-background border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-white" 
                 />

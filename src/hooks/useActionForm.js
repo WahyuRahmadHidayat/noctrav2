@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { submitAction } from '@/services/api';
 import { useMidtrans } from '@/hooks/useMidtrans';
+import { parsePrice } from '@/utils/parsePrice';
 
-export const useActionForm = (type) => {
+export const useActionForm = (type, productData) => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [status, setStatus] = useState('idle');
   const [errorMsg, setErrorMsg] = useState('');
   
-  // Injeksi script Midtrans langsung di-handle di dalam logic hook ini
   useMidtrans(); 
 
   const handleSubmit = async (e) => {
@@ -16,7 +16,18 @@ export const useActionForm = (type) => {
     setErrorMsg('');
 
     try {
-      const result = await submitAction(type, formData);
+      let gross_amount = undefined;
+      if (productData && productData.price) {
+        gross_amount = parsePrice(productData.price);
+      }
+
+      const payload = {
+        ...formData,
+        gross_amount,
+        productId: productData?.id
+      };
+
+      const result = await submitAction(type, payload);
 
       if (type === 'join') {
         setStatus('success');

@@ -44,10 +44,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white text-xs font-bold tracking-widest uppercase mb-6">Support</h4>
             <div className="flex flex-col space-y-4">
-              <Link to="/contact" className="text-gray-500 text-sm hover:text-primary transition-colors uppercase tracking-wide outline-none focus:text-primary">FAQ</Link>
-              <Link to="/contact" className="text-gray-500 text-sm hover:text-primary transition-colors uppercase tracking-wide outline-none focus:text-primary">Shipping</Link>
-              <Link to="/contact" className="text-gray-500 text-sm hover:text-primary transition-colors uppercase tracking-wide outline-none focus:text-primary">Returns</Link>
-              <Link to="/contact" className="text-gray-500 text-sm hover:text-primary transition-colors uppercase tracking-wide outline-none focus:text-primary">Contact</Link>
+              <Link to="/contact" className="text-gray-500 text-sm hover:text-primary transition-colors uppercase tracking-wide outline-none focus:text-primary">Contact & Support</Link>
             </div>
           </div>
 
@@ -80,7 +77,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p>&copy; {new Date().getFullYear()} NOCTRA. All rights reserved.</p>
+        <p className="text-gray-500 text-xs">&copy; {new Date().getFullYear()} NOCTRA. All rights reserved.</p>
           <div className="flex gap-6 text-gray-600 text-xs font-bold tracking-widest uppercase">
             <Link to="/privacy-policy" className="hover:text-primary transition-colors outline-none focus:text-primary">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-primary transition-colors outline-none focus:text-primary">Terms of Service</Link>

@@ -4,6 +4,8 @@ import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from 'layouts/Navbar';
 import Footer from 'layouts/Footer';
 import PageLoader from '@/components/PageLoader';
+import PrivacyPolicyView from './views/PrivacyPolicyView';
+import TermsView from './views/TermsView';
 
 const Home = lazy(() => import('views/home'));
 const ListView = lazy(() => import('views/ListView'));
@@ -12,10 +14,6 @@ const ActionView = lazy(() => import('views/ActionView'));
 const AboutView = lazy(() => import('views/AboutView'));
 const ContactView = lazy(() => import('views/ContactView'));
 const NotFoundView = lazy(() => import('views/NotFoundView'));
-import PrivacyPolicyView from './views/PrivacyPolicyView';
-import TermsView from './views/TermsView';
-
-
 
 export default function App() {
   return (
@@ -34,9 +32,9 @@ export default function App() {
           <Route path="/action/:type" element={<ActionView />} />
           <Route path="/about" element={<AboutView />} />
           <Route path="/contact" element={<ContactView />} />
-          <Route path="*" element={<NotFoundView />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyView />} />
           <Route path="/terms" element={<TermsView />} />
+          <Route path="*" element={<NotFoundView />} />
         </Routes>
       </Suspense>
       <Footer />
