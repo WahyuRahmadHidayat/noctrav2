@@ -13,6 +13,7 @@ const DetailView = lazy(() => import('views/DetailView'));
 const ActionView = lazy(() => import('views/ActionView'));
 const AboutView = lazy(() => import('views/AboutView'));
 const ContactView = lazy(() => import('views/ContactView'));
+const LoginView = lazy(() => import('views/LoginView'));
 const NotFoundView = lazy(() => import('views/NotFoundView'));
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/action/:type" element={<ActionView />} />
           <Route path="/about" element={<AboutView />} />
           <Route path="/contact" element={<ContactView />} />
+          <Route path="/login" element={<LoginView />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyView />} />
           <Route path="/terms" element={<TermsView />} />
           <Route path="*" element={<NotFoundView />} />
