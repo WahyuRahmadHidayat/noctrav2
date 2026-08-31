@@ -90,9 +90,9 @@ export default function Navbar() {
               <button className="w-full flex items-center px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary">
                 <User size={16} className="mr-3" aria-hidden="true" /> My Account
               </button>
-              <Link to="/action/cart" onClick={() => setIsMenuOpen(false)} className="w-full flex items-center justify-between px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary">
-                <div className="flex items-center"><ShoppingCart size={16} className="mr-3" aria-hidden="true" /> Cart</div>
-                <span className="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded-full">2</span>
+              <Link to="/cart" onClick={() => setIsMenuOpen(false)} className="w-full flex items-center justify-between px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary">
+                  <div className="flex items-center"><ShoppingCart size={16} className="mr-3" aria-hidden="true" /> Cart</div>
+                  <span className="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded-full">2</span>
               </Link>
             </div>
 
