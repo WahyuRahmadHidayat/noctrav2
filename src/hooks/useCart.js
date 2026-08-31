@@ -22,6 +22,22 @@ export const useCart = () => {
       price: 1250000,
       quantity: 1,
       category: "EQUIPMENT"
+    },
+    {
+      id: "tactical-night-gloves",
+      img: jerseyImg,
+      name: "TACTICAL NIGHT GLOVES",
+      price: 250000,
+      quantity: 2,
+      category: "ACCESSORIES"
+    },
+    {
+      id: "urban-cycling-cap",
+      img: helmetImg,
+      name: "NOCTRA URBAN CAP",
+      price: 175000,
+      quantity: 1,
+      category: "APPAREL"
     }
   ]);
 
