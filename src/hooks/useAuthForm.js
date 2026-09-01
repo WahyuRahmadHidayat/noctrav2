@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '@/supabase';
 
 export const useAuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -31,19 +32,23 @@ export const useAuthForm = () => {
     }
 
     try {
-      const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      let error;
+      if (isLogin) {
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email: formData.email,
+          password: formData.password,
+        });
+        error = signInError;
+      } else {
+        const { error: signUpError } = await supabase.auth.signUp({
+          email: formData.email,
+          password: formData.password,
+        });
+        error = signUpError;
+      }
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'AUTHENTICATION FAILED');
+      if (error) {
+        throw new Error(error.message || 'AUTHENTICATION FAILED');
       }
 
       setStatus('success');

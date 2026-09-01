@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ArrowUpRight, Menu, X, User, ShoppingCart, LogOut } from 'lucide-react';
+import { ArrowUpRight, Menu, X, User, ShoppingCart, LogOut, LogIn } from 'lucide-react';
 import routes from '../routes';
 import { handleNavClick } from '../utils/navigation';
+import { useCart } from '@/hooks/useCart';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname, hash } = useLocation();
   const navigate = useNavigate();
+  
+  const { cartItems } = useCart();
+  const { currentUser, signOut } = useAuth();
+  
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -22,6 +29,12 @@ export default function Navbar() {
     if (path === '/#home') return pathname === '/' && (!hash || hash === '#home');
     if (path.startsWith('/#')) return pathname === '/' && hash === path.substring(1);
     return pathname === path;
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    setIsMenuOpen(false);
+    navigate('/');
   };
 
   return (
@@ -66,9 +79,18 @@ export default function Navbar() {
                 <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-black">
                   <User size={16} aria-hidden="true" />
                 </div>
-                <div>
-                  <p className="font-bold text-sm text-white">Guest Rider</p>
-                  <p className="text-[10px] text-primary tracking-widest uppercase">JOIN COMMUNITY</p>
+                <div className="overflow-hidden">
+                  {currentUser ? (
+                    <>
+                      <p className="font-bold text-sm text-white truncate" title={currentUser.email}>{currentUser.email.split('@')[0]}</p>
+                      <p className="text-[10px] text-primary tracking-widest uppercase">MEMBER</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="font-bold text-sm text-white">Guest Rider</p>
+                      <p className="text-[10px] text-primary tracking-widest uppercase">JOIN COMMUNITY</p>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -87,20 +109,27 @@ export default function Navbar() {
             </div>
 
             <div className="p-2">
-              <button className="w-full flex items-center px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary">
-                <User size={16} className="mr-3" aria-hidden="true" /> My Account
-              </button>
+              {!currentUser && (
+                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="w-full flex items-center px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary">
+                  <LogIn size={16} className="mr-3" aria-hidden="true" /> Login / Register
+                </Link>
+              )}
+              
               <Link to="/cart" onClick={() => setIsMenuOpen(false)} className="w-full flex items-center justify-between px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary">
-                  <div className="flex items-center"><ShoppingCart size={16} className="mr-3" aria-hidden="true" /> Cart</div>
-                  <span className="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded-full">2</span>
+                <div className="flex items-center"><ShoppingCart size={16} className="mr-3" aria-hidden="true" /> Cart</div>
+                {totalQuantity > 0 && (
+                  <span className="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded-full">{totalQuantity}</span>
+                )}
               </Link>
             </div>
 
-            <div className="p-2 border-t border-border/50">
-              <button className="w-full flex items-center px-4 py-3 text-sm text-red-400 hover:text-red-300 hover:bg-background transition-colors duration-300 outline-none focus:text-red-400">
-                <LogOut size={16} className="mr-3" aria-hidden="true" /> Sign Out
-              </button>
-            </div>
+            {currentUser && (
+              <div className="p-2 border-t border-border/50">
+                <button onClick={handleSignOut} className="w-full flex items-center px-4 py-3 text-sm text-red-400 hover:text-red-300 hover:bg-background transition-colors duration-300 outline-none focus:text-red-400">
+                  <LogOut size={16} className="mr-3" aria-hidden="true" /> Sign Out
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

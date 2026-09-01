@@ -1,13 +1,16 @@
-import { useParams, useLocation, Link } from 'react-router-dom';
+import { useParams, useLocation, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin, Clock, ShoppingCart, Tag, Calendar } from 'lucide-react';
 import ridesData from 'views/home/variables/ridesData';
 import gearData from 'views/home/variables/gearData';
 import blogData from 'views/home/variables/blogData';
 import SEO from '@/components/SEO'; 
+import { useCart } from '@/hooks/useCart';
 
 export default function DetailView() {
   const { id } = useParams();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const { addItem } = useCart();
 
   let item = null;
   let type = '';
@@ -26,6 +29,24 @@ export default function DetailView() {
     type = 'blog';
     backPath = '/#blog';
   }
+
+  const parsePrice = (priceStr) => {
+    if (!priceStr) return 0;
+    const cleanStr = priceStr.toString().replace(/[^0-9]/g, '');
+    return parseInt(cleanStr, 10);
+  };
+
+  const handleAddToCart = () => {
+    if (!item) return;
+    addItem({
+      id: item.id,
+      name: item.title || item.name,
+      price: parsePrice(item.price),
+      img: item.img,
+      category: item.category || 'GEAR'
+    });
+    navigate('/cart');
+  };
 
   if (!item) {
     return (
@@ -117,20 +138,19 @@ export default function DetailView() {
               <Link 
                 to="/action/register" 
                 state={{ id: item.id, title: item.title || item.name, price: item.price }}
-                className="inline-block bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest"
+                className="inline-block bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest uppercase cursor-pointer"
               >
                 REGISTER FOR THIS RIDE
               </Link>
             )}
             
             {type === 'gear' && (
-              <Link 
-                to="/action/cart" 
-                state={{ id: item.id, title: item.title || item.name, price: item.price }}
-                className="inline-flex items-center bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest"
+              <button 
+                onClick={handleAddToCart}
+                className="inline-flex items-center bg-primary text-black px-10 py-4 font-semibold hover:bg-white transition-colors duration-300 tracking-widest uppercase cursor-pointer border-none outline-none"
               >
                 <ShoppingCart size={20} className="mr-3" /> ADD TO CART
-              </Link>
+              </button>
             )}
           </div>
         </div>

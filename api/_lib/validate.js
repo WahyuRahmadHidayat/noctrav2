@@ -22,6 +22,18 @@ export const checkoutSchema = z.object({
   })
 });
 
+export const cartCheckoutSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  phone: z.coerce.string().min(5),
+  items: z.array(z.object({
+    id: z.string(),
+    name: z.string(),
+    price: z.number().positive(),
+    quantity: z.number().positive()
+  })).min(1, "Keranjang kosong")
+});
+
 export const validateBody = (body, schema) => {
   const result = schema.safeParse(body || {});
   if (!result.success) {

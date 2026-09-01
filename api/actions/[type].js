@@ -1,7 +1,7 @@
 import { resend } from '../_lib/resend.js';
 import { snap } from '../_lib/midtrans.js';
 import { sendSuccess, sendError } from '../_lib/response.js';
-import { joinSchema, checkoutSchema, validateBody } from '../_lib/validate.js';
+import { joinSchema, checkoutSchema, cartCheckoutSchema, validateBody } from '../_lib/validate.js';
 import { rateLimit } from '../_lib/limiter.js';
 
 export default async function handler(req, res) {
@@ -32,6 +32,29 @@ export default async function handler(req, res) {
         transaction_details: {
           order_id: `NOCTRA-${type.toUpperCase()}-${Date.now()}`,
           gross_amount: data.gross_amount
+        },
+        customer_details: {
+          first_name: data.name,
+          email: data.email,
+          phone: data.phone
+        }
+      };
+
+      const transaction = await snap.createTransaction(parameter);
+      return sendSuccess(res, { token: transaction.token });
+    }
+
+    if (type === 'checkout') {
+      const data = validateBody(body, cartCheckoutSchema);
+      
+      const totalItemsPrice = data.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const shippingFee = 50000;
+      const finalGrossAmount = totalItemsPrice + shippingFee;
+
+      let parameter = {
+        transaction_details: {
+          order_id: `NOCTRA-CHECKOUT-${Date.now()}`,
+          gross_amount: finalGrossAmount
         },
         customer_details: {
           first_name: data.name,
