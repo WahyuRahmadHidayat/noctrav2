@@ -17,14 +17,17 @@ export const useActionForm = (type, productData) => {
 
     try {
       let gross_amount = undefined;
-      if (productData && productData.price) {
-        gross_amount = parsePrice(productData.price);
+      if (productData && productData.price !== undefined) {
+        gross_amount = typeof productData.price === 'number' 
+          ? productData.price 
+          : parsePrice(productData.price);
       }
 
       const payload = {
         ...formData,
         gross_amount,
-        productId: productData?.id
+        productId: productData?.id,
+        items: productData?.items
       };
 
       const result = await submitAction(type, payload);
