@@ -39,6 +39,13 @@ export default function LoginView() {
             </div>
           )}
 
+          {status === 'confirm-email' && (
+            <div className="bg-primary/20 border border-primary text-primary p-4 mb-6 text-sm font-bold tracking-widest uppercase text-center flex flex-col items-center gap-3">
+              <Mail size={24} />
+              <span>CHECK YOUR INBOX. WE SENT A CONFIRMATION LINK TO {formData.email}. CLICK IT TO ACTIVATE YOUR ACCOUNT BEFORE LOGGING IN.</span>
+            </div>
+          )}
+
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label className="text-xs text-gray-400 tracking-widest uppercase">Email Address</label>
@@ -77,7 +84,7 @@ export default function LoginView() {
             <button 
               type="submit" 
               disabled={status === 'loading' || status === 'success'}
-              className="w-full bg-primary text-black py-4 text-sm font-bold tracking-widest hover:bg-white transition-colors uppercase disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
+              className="w-full bg-primary text-black py-4 text-sm font-bold tracking-widest hover:bg-white transition-colors uppercase disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center cursor-pointer"
             >
               {status === 'loading' ? <Loader2 className="animate-spin" size={20} /> : (isLogin ? 'AUTHENTICATE' : 'REGISTER PROFILE')}
             </button>
@@ -87,7 +94,7 @@ export default function LoginView() {
             <button 
               type="button"
               onClick={toggleMode}
-              className="text-xs text-gray-400 hover:text-primary transition-colors tracking-widest uppercase"
+              className="text-xs text-gray-400 hover:text-primary transition-colors tracking-widest uppercase cursor-pointer"
             >
               {isLogin ? 'Create new account' : 'Already have an account? Login'}
             </button>

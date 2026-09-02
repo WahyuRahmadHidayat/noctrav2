@@ -32,27 +32,41 @@ export const useAuthForm = () => {
     }
 
     try {
-      let error;
       if (isLogin) {
         const { error: signInError } = await supabase.auth.signInWithPassword({
           email: formData.email,
           password: formData.password,
         });
-        error = signInError;
+        
+        if (signInError) {
+          throw new Error(signInError.message || 'AUTHENTICATION FAILED');
+        }
+
+        setStatus('success');
+        setTimeout(() => navigate('/'), 1500);
       } else {
-        const { error: signUpError } = await supabase.auth.signUp({
+        const { data, error: signUpError } = await supabase.auth.signUp({
           email: formData.email,
           password: formData.password,
         });
-        error = signUpError;
-      }
 
-      if (error) {
-        throw new Error(error.message || 'AUTHENTICATION FAILED');
-      }
+        if (signUpError) {
+          throw new Error(signUpError.message || 'REGISTRATION FAILED');
+        }
 
-      setStatus('success');
-      setTimeout(() => navigate('/'), 1500);
+        if (data?.user && data.user.identities && data.user.identities.length === 0) {
+          setStatus('error');
+          setErrorMsg('EMAIL ALREADY REGISTERED. TRY LOGGING IN INSTEAD.');
+          return;
+        }
+
+        if (data?.session) {
+          setStatus('success');
+          setTimeout(() => navigate('/'), 1500);
+        } else {
+          setStatus('confirm-email');
+        }
+      }
     } catch (err) {
       setStatus('error');
       setErrorMsg(err.message);
