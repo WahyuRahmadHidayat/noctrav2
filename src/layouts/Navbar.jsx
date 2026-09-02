@@ -68,12 +68,12 @@ export default function Navbar() {
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
             aria-label={isMenuOpen ? "Close main menu" : "Open main menu"}
             aria-expanded={isMenuOpen}
-            className="text-white hover:text-primary transition-colors duration-300 outline-none focus:text-primary"
+            className="text-white hover:text-primary transition-colors duration-300 outline-none focus:text-primary cursor-pointer"
           >
             {isMenuOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
           </button>
 
-          <div className={`absolute top-full right-0 mt-6 w-64 bg-surface border border-border shadow-2xl transition-all duration-300 origin-top-right ${isMenuOpen ? 'scale-100 opacity-100 visible' : 'scale-95 opacity-0 invisible'}`}>
+          <div className={`absolute top-full right-0 mt-6 w-64 bg-surface border border-border shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-300 origin-top-right ${isMenuOpen ? 'scale-100 opacity-100 visible' : 'scale-95 opacity-0 invisible'}`}>
             <div className="p-5 border-b border-border/50 bg-background/50">
               <div className="flex items-center space-x-3 mb-1">
                 <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-black">
@@ -110,12 +110,12 @@ export default function Navbar() {
 
             <div className="p-2">
               {!currentUser && (
-                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="w-full flex items-center px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary">
+                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="w-full flex items-center px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary cursor-pointer">
                   <LogIn size={16} className="mr-3" aria-hidden="true" /> Login / Register
                 </Link>
               )}
               
-              <Link to="/cart" onClick={() => setIsMenuOpen(false)} className="w-full flex items-center justify-between px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary">
+              <Link to="/cart" onClick={() => setIsMenuOpen(false)} className="w-full flex items-center justify-between px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary cursor-pointer">
                 <div className="flex items-center"><ShoppingCart size={16} className="mr-3" aria-hidden="true" /> Cart</div>
                 {totalQuantity > 0 && (
                   <span className="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded-full">{totalQuantity}</span>
@@ -125,7 +125,10 @@ export default function Navbar() {
 
             {currentUser && (
               <div className="p-2 border-t border-border/50">
-                <button onClick={handleSignOut} className="w-full flex items-center px-4 py-3 text-sm text-red-400 hover:text-red-300 hover:bg-background transition-colors duration-300 outline-none focus:text-red-400">
+                <Link to="/account" onClick={() => setIsMenuOpen(false)} className="w-full flex items-center px-4 py-3 text-sm text-gray-300 hover:text-primary hover:bg-background transition-colors duration-300 outline-none focus:text-primary cursor-pointer">
+                  <User size={16} className="mr-3" aria-hidden="true" /> My Account
+                </Link>
+                <button onClick={handleSignOut} className="w-full flex items-center px-4 py-3 text-sm text-red-400 hover:text-red-300 hover:bg-background transition-colors duration-300 outline-none focus:text-red-400 cursor-pointer">
                   <LogOut size={16} className="mr-3" aria-hidden="true" /> Sign Out
                 </button>
               </div>

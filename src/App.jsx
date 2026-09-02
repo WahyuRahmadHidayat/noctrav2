@@ -8,6 +8,7 @@ import PrivacyPolicyView from './views/PrivacyPolicyView';
 import TermsView from './views/TermsView';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const Home = lazy(() => import('views/home'));
 const ListView = lazy(() => import('views/ListView'));
@@ -17,6 +18,7 @@ const AboutView = lazy(() => import('views/AboutView'));
 const ContactView = lazy(() => import('views/ContactView'));
 const LoginView = lazy(() => import('views/LoginView'));
 const CartView = lazy(() => import('views/CartView'));
+const AccountView = lazy(() => import('views/AccountView'));
 const NotFoundView = lazy(() => import('views/NotFoundView'));
 
 export default function App() {
@@ -40,6 +42,11 @@ export default function App() {
               <Route path="/contact" element={<ContactView />} />
               <Route path="/login" element={<LoginView />} />
               <Route path="/cart" element={<CartView />} />
+              <Route path="/account" element={
+                <ProtectedRoute>
+                  <AccountView />
+                </ProtectedRoute>
+              } />
               <Route path="/privacy-policy" element={<PrivacyPolicyView />} />
               <Route path="/terms" element={<TermsView />} />
               <Route path="*" element={<NotFoundView />} />

@@ -30,21 +30,21 @@ export default function ContactView() {
                 <div className="bg-primary/10 p-3 border border-primary/20 text-primary"><Mail size={24} /></div>
                 <div className="pt-1">
                   <h4 className="font-bold text-sm tracking-widest uppercase mb-2 text-white">Email</h4>
-                  <a href="mailto:amadday@gmail.com" className="text-gray-400 text-sm leading-relaxed hover:text-primary transition-colors block">crew@noctra.cc</a>
+                  <a href="mailto:crew@noctra.cc" className="text-gray-400 text-sm leading-relaxed hover:text-primary transition-colors block">crew@noctra.cc</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="bg-primary/10 p-3 border border-primary/20 text-primary"><Phone size={24} /></div>
                 <div className="pt-1">
                   <h4 className="font-bold text-sm tracking-widest uppercase mb-2 text-white">Emergency / Hotline</h4>
-                  <a href="tel:+62 815-2894-2073" className="text-gray-400 text-sm leading-relaxed hover:text-primary transition-colors block">+62 815-2894-2073</a>
+                  <a href="tel:+622155550123" className="text-gray-400 text-sm leading-relaxed hover:text-primary transition-colors block">+62 21 5555 0123</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="w-full md:w-1/2 bg-surface border border-border p-8 md:p-10 shadow-[0_0_30px_rgba(0,0,0,0.3)]">
-            <h3 className="font-bebas text-3xl mb-8 border-b border-white/10 pb-4">SEND A MESSAGE</h3>
+            <h3 className="font-bebas text-3xl mb-8 border-b border-border pb-4">SEND A MESSAGE</h3>
             
             {status === 'success' && (
               <div className="bg-primary/20 border border-primary text-primary p-4 mb-6 text-sm font-bold tracking-widest uppercase text-center">
@@ -92,7 +92,7 @@ export default function ContactView() {
               <button 
                 type="submit" 
                 disabled={status === 'loading'}
-                className="w-full bg-primary text-black py-4 text-sm font-bold tracking-widest hover:bg-white transition-colors uppercase disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
+                className="w-full bg-primary text-black py-4 text-sm font-bold tracking-widest hover:bg-white transition-colors uppercase disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center cursor-pointer"
               >
                 {status === 'loading' ? <Loader2 className="animate-spin" size={20} /> : 'TRANSMIT MESSAGE'}
               </button>
