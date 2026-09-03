@@ -84,7 +84,7 @@ export const useAuthForm = () => {
     isLogin, 
     formData, 
     setFormData, 
-    status, 
+    status,   
     errorMsg, 
     handleSubmit, 
     toggleMode 
