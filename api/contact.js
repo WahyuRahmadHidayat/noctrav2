@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   try {
     const data = validateBody(req.body || {}, contactSchema);
 
-    await resend.emails.send({
+    const { error: resendError } = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: globalThis.process.env.CONTACT_EMAIL_TO || 'amadday09@gmail.com',
       subject: `[NOCTRA] Contact Message from ${data.name}`,
@@ -20,8 +20,10 @@ export default async function handler(req, res) {
              <p>${data.message}</p>`
     });
 
+    if (resendError) return sendError(res, resendError.message, 400);
+
     return sendSuccess(res, { message: 'Pesan berhasil dikirim!' });
   } catch (error) {
-    return sendError(res, error.message);
+    return sendError(res, error.message, 500);
   }
 }
