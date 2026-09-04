@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     const destinationEmail = globalThis.process?.env?.CONTACT_EMAIL_TO || 'amadday09@gmail.com';
 
     const { data: emailData, error: resendError } = await resend.emails.send({
-      from: 'NOCTRA Support <onboarding@resend.dev>',
+      from: 'onboarding@resend.dev',
       to: [destinationEmail],
       reply_to: data.email,
       subject: `[NOCTRA] Pesan Baru dari ${data.name}`,
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     });
 
     if (resendError) {
-      return sendError(res, resendError.message || 'Gagal mengirim email via Resend.', 400);
+      return sendError(res, typeof resendError === 'string' ? resendError : (resendError.message || JSON.stringify(resendError)), 400);
     }
 
     return sendSuccess(res, { message: 'Pesan berhasil dikirim!', id: emailData?.id });
