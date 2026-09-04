@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import blogData from 'views/home/data/blogData';
+import blogData from '@/data/blogData';
 import SectionLink from '@/components/SectionLink';
 
 export default function Blog() {

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, ArrowRight } from 'lucide-react';
-import ridesData from 'views/home/data/ridesData';
+import ridesData from '@/data/ridesData';
 import SectionLink from '@/components/SectionLink';
 
 export default function UpcomingRides() {

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
-import gearData from 'views/home/data/gearData';
+import gearData from '@/data/gearData';
 import SectionLink from '@/components/SectionLink';
 
 export default function Gear() {
