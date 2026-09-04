@@ -17,7 +17,6 @@ const localStorageMock = (() => {
 
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
 
-// Kita pakai React.createElement murni biar parser Vite/ESLint nggak protes soal sintaks JSX
 const Wrapper = ({ children }) => {
   return React.createElement(
     MemoryRouter,

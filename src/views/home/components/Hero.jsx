@@ -1,5 +1,5 @@
 import heroBg from '@/assets/images/hero/hero.avif';
-import { ArrowUpRight, Crosshair } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { FaInstagram, FaTiktok, FaStrava } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { socialLinks } from '@/config/socialLinks';
@@ -15,10 +15,6 @@ export default function Hero() {
 
       <div className="container mx-auto px-4 md:px-8 relative z-20 w-full flex justify-between">
         <div className="max-w-3xl">
-          <div className="flex items-center space-x-3 text-xs md:text-sm tracking-widest text-gray-300 mb-6">
-            <Crosshair size={16} className="text-primary shrink-0" />
-            <p>WE DON'T RIDE TO ESCAPE LIFE<br/>WE RIDE TO LIVE IT</p>
-          </div>
           
           <h1 className="font-bebas text-6xl sm:text-8xl md:text-[120px] leading-[0.85] tracking-wide mb-6">
             <span className="text-white block">RIDE AFTER</span>
