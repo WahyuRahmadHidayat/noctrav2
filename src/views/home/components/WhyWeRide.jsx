@@ -1,5 +1,12 @@
+import { Moon, Users, Zap } from 'lucide-react';
 import whyRideBg from '@/assets/images/hero/why-ride-bg.avif';
-import whyWeRideData from '@/views/home/variables/whyWeRideData';
+import whyWeRideData from '@/data/whyWeRideData';
+
+const iconMap = {
+  Moon,
+  Users,
+  Zap
+};
 
 export default function WhyWeRide() {
   return (
@@ -13,15 +20,20 @@ export default function WhyWeRide() {
         </div>
         
         <div className="md:col-span-4 space-y-6 md:space-y-8">
-          {whyWeRideData.map((reason, idx) => (
-            <div key={idx} className="flex gap-4 md:gap-6 group cursor-default">
-              <div className="group-hover:scale-110 transition-transform duration-300 shrink-0">{reason.icon}</div>
-              <div>
-                <h4 className="text-primary text-xs md:text-sm font-semibold tracking-wider mb-1 md:mb-2">{reason.title}</h4>
-                <p className="text-gray-400 text-xs md:text-sm">{reason.desc}</p>
+          {whyWeRideData.map((reason, idx) => {
+            const IconComponent = iconMap[reason.icon];
+            return (
+              <div key={idx} className="flex gap-4 md:gap-6 group cursor-default">
+                <div className="group-hover:scale-110 transition-transform duration-300 shrink-0">
+                  <IconComponent size={28} className="text-white" />
+                </div>
+                <div>
+                  <h4 className="text-primary text-xs md:text-sm font-semibold tracking-wider mb-1 md:mb-2">{reason.title}</h4>
+                  <p className="text-gray-400 text-xs md:text-sm">{reason.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="md:col-span-5 relative overflow-hidden border border-border mt-4 md:mt-0">

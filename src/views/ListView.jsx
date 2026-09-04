@@ -1,8 +1,8 @@
 import { useLocation, Link } from 'react-router-dom';
 import { ArrowRight, MapPin, ShoppingBag, BookOpen } from 'lucide-react';
-import ridesData from 'views/home/variables/ridesData';
-import gearData from 'views/home/variables/gearData';
-import blogData from 'views/home/variables/blogData';
+import ridesData from '@/data/ridesData';
+import gearData from '@/data/gearData';
+import blogData from '@/data/blogData';
 import SEO from '@/components/SEO';
 
 export default function ListView() {
@@ -28,7 +28,6 @@ export default function ListView() {
 
   return (
     <div className="min-h-screen bg-background text-white pt-32 pb-20 px-4 md:px-8">
-      {/* Komponen SEO disisipkan di sini */}
       <SEO 
         title={title || 'Explore'} 
         description={`Explore our latest NOCTRA ${type === 'shop' ? 'gear and merchandise' : type === 'rides' ? 'urban night cycling events' : 'journal and stories'}.`} 

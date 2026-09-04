@@ -1,52 +1,10 @@
-import { useParams, useLocation, Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, MapPin, Clock, ShoppingCart, Tag, Calendar } from 'lucide-react';
-import ridesData from 'views/home/variables/ridesData';
-import gearData from 'views/home/variables/gearData';
-import blogData from 'views/home/variables/blogData';
 import SEO from '@/components/SEO'; 
-import { useCart } from '@/hooks/useCart';
+import { useItemDetail } from '@/hooks/useItemDetail';
 
 export default function DetailView() {
-  const { id } = useParams();
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
-  const { addItem } = useCart();
-
-  let item = null;
-  let type = '';
-  let backPath = '/';
-
-  if (pathname.includes('/rides')) {
-    item = ridesData.find((r) => r.id === id);
-    type = 'ride';
-    backPath = '/#rides';
-  } else if (pathname.includes('/shop')) {
-    item = gearData.find((g) => g.id === id);
-    type = 'gear';
-    backPath = '/#shop';
-  } else if (pathname.includes('/blog')) {
-    item = blogData.find((b) => b.id === id);
-    type = 'blog';
-    backPath = '/#blog';
-  }
-
-  const parsePrice = (priceStr) => {
-    if (!priceStr) return 0;
-    const cleanStr = priceStr.toString().replace(/[^0-9]/g, '');
-    return parseInt(cleanStr, 10);
-  };
-
-  const handleAddToCart = () => {
-    if (!item) return;
-    addItem({
-      id: item.id,
-      name: item.title || item.name,
-      price: parsePrice(item.price),
-      img: item.img,
-      category: item.category || 'GEAR'
-    });
-    navigate('/cart');
-  };
+  const { item, type, backPath, handleAddToCart } = useItemDetail();
 
   if (!item) {
     return (
