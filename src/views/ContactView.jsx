@@ -30,14 +30,14 @@ export default function ContactView() {
                 <div className="bg-primary/10 p-3 border border-primary/20 text-primary"><Mail size={24} /></div>
                 <div className="pt-1">
                   <h4 className="font-bold text-sm tracking-widest uppercase mb-2 text-white">Email</h4>
-                  <a href="mailto: amadday09@gmail.com" className="text-gray-400 text-sm leading-relaxed hover:text-primary transition-colors block">crew@noctra.cc</a>
+                  <a href="mailto:amadday09@gmail.com" className="text-gray-400 text-sm leading-relaxed hover:text-primary transition-colors block">crew@noctra.cc</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="bg-primary/10 p-3 border border-primary/20 text-primary"><Phone size={24} /></div>
                 <div className="pt-1">
                   <h4 className="font-bold text-sm tracking-widest uppercase mb-2 text-white">Emergency / Hotline</h4>
-                  <a href="tel:+62 81528942073" className="text-gray-400 text-sm leading-relaxed hover:text-primary transition-colors block">+62 81528942073</a>
+                  <a href="tel:+62 851-3655-9961" className="text-gray-400 text-sm leading-relaxed hover:text-primary transition-colors block">+62 851-3655-9961</a>
                 </div>
               </div>
             </div>
