@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
     await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: globalThis.process.env.CONTACT_EMAIL_TO || 'onboarding@resend.dev',
+      to: globalThis.process.env.CONTACT_EMAIL_TO || 'amadday09@gmail.com',
       subject: `[NOCTRA] Contact Message from ${data.name}`,
       html: `<p><strong>Name:</strong> ${data.name}</p>
              <p><strong>Email:</strong> ${data.email}</p>
