@@ -37,7 +37,7 @@ export default function ContactView() {
                 <div className="bg-primary/10 p-3 border border-primary/20 text-primary"><Phone size={24} /></div>
                 <div className="pt-1">
                   <h4 className="font-bold text-sm tracking-widest uppercase mb-2 text-white">Emergency / Hotline</h4>
-                  <a href="tel:+62 81528942073" className="text-gray-400 text-sm leading-relaxed hover:text-primary transition-colors block">+62 21 5555 0123</a>
+                  <a href="tel:+62 81528942073" className="text-gray-400 text-sm leading-relaxed hover:text-primary transition-colors block">+62 81528942073</a>
                 </div>
               </div>
             </div>
