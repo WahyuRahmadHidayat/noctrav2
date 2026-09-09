@@ -2,7 +2,7 @@ import React from 'react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { CartProvider } from '../context/CartContext';
+import { CartProvider } from '@/cart/CartContext';
 import { useCart } from './useCart';
 
 const localStorageMock = (() => {
