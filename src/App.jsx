@@ -7,7 +7,7 @@ import PageLoader from '@/components/PageLoader';
 import PrivacyPolicyView from './views/PrivacyPolicyView';
 import TermsView from './views/TermsView';
 import { AuthProvider } from './context/AuthContext';
-import { CartProvider } from './cart/CartContext';
+import { CartProvider } from './context/CartContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 const Home = lazy(() => import('views/home'));

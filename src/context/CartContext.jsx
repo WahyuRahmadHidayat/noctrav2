@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartContext } from './cartStore';
+import { CartContext } from '../store/cartStore';
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);

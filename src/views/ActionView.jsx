@@ -12,7 +12,7 @@ export default function ActionView() {
   const titles = {
     join: 'JOIN THE CREW',
     register: 'REGISTER RIDE',
-    cart: 'SECURE CHECKOUT'
+    checkout: 'SECURE CHECKOUT'
   };
 
   if (status === 'success') {

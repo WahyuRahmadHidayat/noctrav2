@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export default function SEO({ title, description, type = 'website', image = '/lo.svg', isHome = false }) {
+export default function SEO({ title, description, type = 'website', image = '/og-image.png', isHome = false }) {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function SEO({ title, description, type = 'website', image = '/lo
         "@type": "Organization",
         "name": "NOCTRA Urban Cycling Club",
         "url": "https://www.noctra.cc",
-        "logo": "https://www.noctra.cc/lo.svg",
+        "logo": "https://www.noctra.cc/lo.avif",
         "description": "Urban night cycling club dedicated to those who own the night."
       });
     } else if (schemaTag) {
